@@ -114,11 +114,11 @@ const MainClubPage = ({ club, onBack, onAdminClick, onClubUpdate }) => {
           Буцах
         </button>
 
-        <div className="h-full px-5 py-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent">
+        <div className="h-full px-3 sm:px-5 pt-14 sm:pt-6 py-6 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-8">
-              <img src={clubData.image} alt={clubData.name} className="w-full h-64 object-cover rounded-2xl mb-6" />
-              <h1 className="text-3xl font-bold">{clubData.name}</h1>
+            <div className="mb-6 sm:mb-8">
+              <img src={clubData.image} alt={clubData.name} className="w-full h-40 sm:h-64 object-cover rounded-xl sm:rounded-2xl mb-4 sm:mb-6" />
+              <h1 className="text-2xl sm:text-3xl font-bold">{clubData.name}</h1>
               {clubType && (
                 <span className="inline-block mt-2 px-3 py-1 rounded-full bg-[#d07900]/30 text-[#ff9f1c] text-sm capitalize">
                   {clubType}
@@ -156,7 +156,7 @@ const MainClubPage = ({ club, onBack, onAdminClick, onClubUpdate }) => {
             {activeTab === "info" && (
               <div className="space-y-6">
                 {/* About */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <div className="flex justify-between items-start mb-2">
                     <h2 className="text-lg font-semibold">Тухай</h2>
                     {isLeader && (
@@ -182,7 +182,7 @@ const MainClubPage = ({ club, onBack, onAdminClick, onClubUpdate }) => {
                 </div>
 
                 {/* Goal */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <div className="flex justify-between items-start mb-2">
                     <h2 className="text-lg font-semibold">Зорилго</h2>
                     {isLeader && (
@@ -208,7 +208,7 @@ const MainClubPage = ({ club, onBack, onAdminClick, onClubUpdate }) => {
                 </div>
 
                 {/* Schedule */}
-                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6">
+                <div className="bg-white/10 backdrop-blur-md rounded-xl sm:rounded-2xl p-4 sm:p-6">
                   <div className="flex justify-between items-start mb-2">
                     <h2 className="text-lg font-semibold">Цагийн хуваарь</h2>
                     {isLeader && (
