@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Filter from "./Filter";
 import ClubBlocks from "./ClubBlocks";
 import Login from "../login/Login";
+import CreateClubModal from "./CreateClubModal";
 import { useAuth } from "../login/AuthContext.jsx";
 
 // general admin can have different interface that shows:
@@ -24,7 +25,7 @@ function filterClubs(clubs, filters) {
   });
 }
 
-const MainPage = ({ clubs, onClubSelect, onAdminClick, onClubUpdate }) => {
+const MainPage = ({ clubs, onClubSelect, onAdminClick, onClubUpdate, onNewClubRequest }) => {
   const { isAuthenticated } = useAuth();
   const [filters, setFilters] = useState({
     year: "",
@@ -33,6 +34,7 @@ const MainPage = ({ clubs, onClubSelect, onAdminClick, onClubUpdate }) => {
   });
   const [isNavbarOpen, setIsNavbarOpen] = useState(false);
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isCreateClubOpen, setIsCreateClubOpen] = useState(false);
 
   const filteredClubs = filterClubs(clubs || [], filters);
   const onSeeClub = (club) => onClubSelect?.(club);
@@ -49,6 +51,7 @@ const MainPage = ({ clubs, onClubSelect, onAdminClick, onClubUpdate }) => {
         onClose={() => setIsNavbarOpen(false)}
         onLoginClick={() => setIsLoginOpen(true)}
         onAdminClick={onAdminClick}
+        onCreateClubClick={() => setIsCreateClubOpen(true)}
       />
 
       {/* Main content area */}
@@ -86,8 +89,8 @@ const MainPage = ({ clubs, onClubSelect, onAdminClick, onClubUpdate }) => {
           <Filter filters={filters} setFilters={setFilters}/>
 
           {/* Clubs Section */}
-          <div className="h-9/10 px-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent overflow-y-auto">
-            <div className="grid gap-6 sm:grid-cols-1 lg:grid-cols-3">
+          <div className="flex-1 px-3 sm:px-5 scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-transparent overflow-y-auto">
+            <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
               {filteredClubs.map((club) => (
                 <ClubBlocks 
                   key={club.id} 
@@ -102,6 +105,16 @@ const MainPage = ({ clubs, onClubSelect, onAdminClick, onClubUpdate }) => {
 
           {/* Login Overlay */}
           <Login isOpen={isLoginOpen} onClose={() => setIsLoginOpen(false)} />
+
+          {/* Create Club Modal */}
+          <CreateClubModal
+            isOpen={isCreateClubOpen}
+            onClose={() => setIsCreateClubOpen(false)}
+            onSubmitRequest={(request) => {
+              onNewClubRequest?.(request);
+              setIsCreateClubOpen(false);
+            }}
+          />
       </main>
     </div>
   )

@@ -30,16 +30,16 @@ export default function ClubBlocks({ club, onSeeMore, onClubUpdate }) {
 
   return (
     // bg-gradient-to-b from-[#f2e9e4] via-[#c9ada7] to-[#9a8c98]
-    <div className="p-5 hover:shadow-lg transition
+    <div className="p-4 sm:p-5 hover:shadow-lg transition
       bg-white/10 backdrop-blur-md
-      shadow-sm rounded-4xl flex flex-col justify-between
+      shadow-sm rounded-2xl sm:rounded-4xl flex flex-col justify-between
     ">
       <div className="flex flex-col gap-3">
         {/* Img */}
         <img
           src={club.image}
           alt={club.name}
-          className="h-40 w-full object-cover rounded-2xl"
+          className="h-32 sm:h-40 w-full object-cover rounded-xl sm:rounded-2xl"
         />
 
         {/* Title */}

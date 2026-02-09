@@ -27,7 +27,7 @@ const handleMobileClose = (onClose) => {
   }
 };
 
-const Navbar = ({ isOpen, onClose, onLoginClick, onAdminClick }) => {
+const Navbar = ({ isOpen, onClose, onLoginClick, onAdminClick, onCreateClubClick }) => {
   const { user, logout, isAuthenticated, isAdmin } = useAuth();
 
   return (
@@ -115,10 +115,15 @@ const Navbar = ({ isOpen, onClose, onLoginClick, onAdminClick }) => {
                 label="Оролцдог клубүүд" 
                 onClick={() => handleMobileClose(onClose)}
               />
-              <NavItem 
-                label="+ Шинээр клуб нээх" 
-                onClick={() => handleMobileClose(onClose)}
-              />
+              <button 
+                onClick={() => {
+                  onCreateClubClick?.();
+                  handleMobileClose(onClose);
+                }}
+                className="rounded-lg bg-[#d07900] hover:bg-[#ff9f1c] w-full text-center py-3 text-white transition-colors font-medium"
+              >
+                Клуб нээх
+              </button>
             </>
           ) : (
             <>
