@@ -134,7 +134,7 @@ const MainClubPage = ({ club, onBack, onAdminClick, onClubUpdate }) => {
                   activeTab === "info" ? "text-[#ff9f1c] border-b-2 border-[#ff9f1c]" : "text-gray-400 hover:text-gray-200"
                 }`}
               >
-                Клубын мэдээлэл
+                Клубийн мэдээлэл
               </button>
               {isLeader && (
                 <button
